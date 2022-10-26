@@ -2,7 +2,7 @@ import React from "react";
 import MyContext from "../context/MyContext";
 
 function Table() {
-  const { planets, setPlanets, tablePlanet, setTablePlanet } =
+  const { setPlanets, tablePlanets, setTablePlanets } =
     React.useContext(MyContext);
 
   React.useEffect(() => {
@@ -12,13 +12,13 @@ function Table() {
         const json = await response.json();
         const data = await json.results;
         setPlanets([...data]);
+        setTablePlanets([...data]);
       } catch (error) {
         console.log(error.message);
       }
     };
     fetchPlanets();
-  }, [setPlanets]);
-  console.log(planets);
+  }, [setPlanets, setTablePlanets]);
   return (
     <table>
       <thead>
@@ -39,7 +39,7 @@ function Table() {
         </tr>
       </thead>
       <tbody>
-        {planets.length > 0 && planets.map((planet) => {
+        {tablePlanets.length > 0 && tablePlanets.map((planet) => {
           return (
             <tr key={planet.name}>
               <td>{planet.name}</td>
