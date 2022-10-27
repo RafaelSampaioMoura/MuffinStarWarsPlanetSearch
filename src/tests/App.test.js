@@ -1,7 +1,6 @@
 import React from 'react';
-import { findAllByTestId, getByTestId, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import App from '../App';
-import userEvent from '@testing-library/user-event';
 
 describe('Testes de requisitos', () => {
   jest.setTimeout(30000);
