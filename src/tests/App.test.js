@@ -1,6 +1,7 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { findByTestId, render, screen } from '@testing-library/react';
 import App from '../App';
+import userEvent from '@testing-library/user-event';
 
 describe('Testes de requisitos', () => {
   jest.setTimeout(30000);
@@ -22,5 +23,10 @@ describe('Testes de requisitos', () => {
     expect(comparisonInput).toBeInTheDocument();
     expect(valueInput).toBeInTheDocument();
     expect(btnFilter).toBeInTheDocument();
+
+    userEvent.type(header, 'Alderaan');
+
+    const tatooine = await screen.findByTestId('name-filter');
+    expect(tatooine).toBeInTheDocument();
   })
 })
